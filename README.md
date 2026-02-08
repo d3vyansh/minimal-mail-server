@@ -27,19 +27,19 @@ To compile and run this project, you'll need:
 
    ```bash
    git clone https://github.com/d3vyansh/minimal-mail-server.git
-   cd simple-smtp-server
+   cd minimal-mail-server
    ```
 
 2. Compile the source code:
 
    ```bash
-   gcc mailserver.c -o mailserver
+   gcc main.c -o main
    ```
 
 3. Run the server:
 
    ```bash
-   ./mailserver
+   ./main
    ```
 
    The server will start listening on port `2525`.
