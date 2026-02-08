@@ -26,7 +26,7 @@ To compile and run this project, you'll need:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/d3vyansh/minimal-mail-server-main.git
+   git clone https://github.com/d3vyansh/minimal-mail-server.git
    cd simple-smtp-server
    ```
 
