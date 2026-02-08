@@ -1,14 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#ifdef _WIN32
-    #include <winsock2.h>
-    #pragma comment(lib, "ws2_32.lib")
-    typedef int socklen_t;
-#else
-    #include <unistd.h>
-    #include <arpa/inet.h>
-#endif
+#include <unistd.h>
+#include <arpa/inet.h>
 
 #define PORT 2525
 #define BUFFER_SIZE 1024
@@ -55,14 +49,6 @@ int main() {
     struct sockaddr_in server_addr, client_addr;
     socklen_t addr_size;
 
-    #ifdef _WIN32
-        WSADATA wsa_data;
-        if (WSAStartup(MAKEWORD(2, 2), &wsa_data) != 0) {
-            perror("WSAStartup failed");
-            return 1;
-        }
-    #endif
-
     // Create socket
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (server_socket < 0) {
@@ -102,11 +88,6 @@ int main() {
         handle_client(client_socket);
     }
 
-    #ifdef _WIN32
-        closesocket(server_socket);
-        WSACleanup();
-    #else
-        close(server_socket);
-    #endif
+    close(server_socket);
     return 0;
 }
